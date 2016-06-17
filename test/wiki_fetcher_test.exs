@@ -2,7 +2,10 @@ defmodule WikiFetcherTest do
   use ExUnit.Case
   doctest WikiFetcher
 
-  test "the truth" do
-    assert 1 + 1 == 2
+  import WikiFetcher.CLI
+
+  test "fetch HMTL" do
+    WikiFetcher.CLI.fetch("M42")
   end
+
 end
