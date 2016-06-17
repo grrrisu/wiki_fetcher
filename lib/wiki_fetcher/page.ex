@@ -8,6 +8,7 @@ defmodule WikiFetcher.Page do
     |> url
     |> HTTPoison.get(@browser)
     |> handle_response
+    |> parse_html
   end
 
   def url(term) do
@@ -20,6 +21,14 @@ defmodule WikiFetcher.Page do
 
   def handle_response( {___, %{status_code: ___, headers: headers, body: body} ) do
     {:error, headers: headers, body: body}
+  end
+
+  def parse_html({:ok, _headers, body}) do
+    IO.puts Floki.find("h1")
+  end
+
+  def parse_html({:error, headers, body}) do
+    IO.puts("download failed! #{headers} #{body}")
   end
 
 end
