@@ -1,0 +1,2 @@
+defmodule WikiFetcher do
+end
